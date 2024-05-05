@@ -6,6 +6,7 @@ import RecentDonations from '../../RecentDonations';
 import zecFaucetImage from '../../../assets/zecfaucet1.png'; 
 import CoinTickerWidget from '../../CoinTickerWidget';
 import { Container, Description, Footer, Header, Image, Row } from './styles';
+
 interface Payout {
   u: number;
   z: number;
@@ -20,27 +21,43 @@ const FaucetApp: React.FC = () => {
 
   useEffect(() => {
     const getFaucetPayout = () => {
-      http.get('/payout').then((res) => {
-        setPayout(res.data);
-      });
+      http.get('/payout')
+        .then((res) => {
+          setPayout(res.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching faucet payout:', error);
+        });
     };
 
     const getDonateAddress = () => {
-      http.get('/donate').then((res) => {
-        setDonate(res.data);
-      });
+      http.get('/donate')
+        .then((res) => {
+          setDonate(res.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching donate address:', error);
+        });
     };
 
     const getFaucetBalance = () => {
-      http.get('/balance').then((res) => {
-        setBalance(res.data);
-      });
+      http.get('/balance')
+        .then((res) => {
+          setBalance(res.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching faucet balance:', error);
+        });
     };
 
     const getLatestDonations = () => {
-      http.get('/txns').then((res) => {
-        setDonations(res.data);
-      });
+      http.get('/txns')
+        .then((res) => {
+          setDonations(res.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching latest donations:', error);
+        });
     };
 
     getFaucetPayout();
