@@ -1,11 +1,12 @@
 import React from 'react';
-import { DonationList, DonationsHeading, Row, Table, TableCell, TableHeader } from './styles';
+import { Container, Item, Label, List, Title, Value } from './styles';
+interface TxDetails {
+  amount: number;
+  memos: string[];
+}
 
 interface Donation {
-  txDetails: {
-    amount: number;
-    memos: string[];
-  }[];
+  txDetails: TxDetails[];
   time: number;
 }
 
@@ -15,36 +16,36 @@ interface RecentDonationsProps {
 
 const RecentDonations: React.FC<RecentDonationsProps> = ({ donations }) => {
   return (
-    <Row>
-      <DonationsHeading>Recent donations:</DonationsHeading>
-      <DonationList>
-        <Table>
-          <thead>
+    <Container>
+      <Title>Recent donations:</Title>
+      <List>
+        <Item>
+          <Label>
             <tr>
-              <TableHeader>Donation Amount</TableHeader>
-              <TableHeader>Datetime</TableHeader>
-              <TableHeader>Memo</TableHeader>
+              <th>Donation Amount</th>
+              <th>Datetime</th>
+              <th>Memo</th>
             </tr>
-          </thead>
-          <tbody>
+          </Label>
+          <Value>
             {donations.map((donation, i) => (
               <tr key={i}>
-                <TableCell>{donation.txDetails[0].amount} ZEC</TableCell>
-                <TableCell>
+                <td>{donation.txDetails[0].amount} ZEC</td>
+                <td>
                   {new Date(donation.time * 1000).toLocaleDateString()}{' '}
                   {new Date(donation.time * 1000).toLocaleTimeString()}
-                </TableCell>
-                <TableCell>
+                </td>
+                <td>
                   {donation.txDetails[0].memos
                     ? donation.txDetails[0].memos[0]
                     : 'No memo available'}
-                </TableCell>
+                </td>
               </tr>
             ))}
-          </tbody>
-        </Table>
-      </DonationList>
-    </Row>
+          </Value>
+        </Item>
+      </List>
+    </Container>
   );
 };
 

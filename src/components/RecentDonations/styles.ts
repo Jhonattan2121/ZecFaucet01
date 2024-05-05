@@ -1,38 +1,49 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Row = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+`;
+
+export const Title = styled.h1`
+margin: 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const List = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 300px;
+`;
+
+export const Item = styled.li`
+   display: flex;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  padding: 20px;
-`;
-
-export const DonationsHeading = styled.h4`
-  font-size: 1.5em;
-  margin-bottom: 10px;
-`;
-
-export const DonationList = styled.div`
-  width: 100%;
-  overflow-x: auto;
-`;
-
-export const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-`;
-
-export const TableHeader = styled.th`
-  padding: 8px;
-  text-align: left;
+  padding: 8px 0;
   border-bottom: 1px solid #ddd;
-  background-color: #f2f2f2;
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
-export const TableCell = styled.td`
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+export const Label = styled.span`
+   font-weight: bold;
+  width: 100px;
+`;
+
+export const Value = styled.span`
+margin-left: 16px;
+
+
 `;
