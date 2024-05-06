@@ -8,6 +8,26 @@ export const Container = styled.div`
   text-align: center;
 `;
 
+export const ToggleButton = styled.button`
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: inherit;
+  transition: color 0.3s ease;
+
+  svg {
+    margin-right: 5px;
+    font-size: 20px;
+  }
+
+  &:hover {
+    color: #007bff; 
+  }
+`;
+
 export const Header = styled.h1`
   font-size: 2em;
   margin-top: 20px;
@@ -32,8 +52,6 @@ export const Row = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Footer = styled.p`
-  font-size: 0.8em;
-  color: #888;
-`;
+ 
+
 

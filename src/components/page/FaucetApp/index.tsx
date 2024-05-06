@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import http from '../../../http-common';
-import ReceiveZec from '../../ReceiveZec';
-import FaucetBalance from '../../FaucetBalance';
-import RecentDonations from '../../RecentDonations';
+import ReceiveZec from '../../FaucetList/ReceiveZec';
+import FaucetBalance from '../../FaucetList/FaucetBalance';
 import zecFaucetImage from '../../../assets/zecfaucet1.png'; 
 import CoinTickerWidget from '../../CoinTickerWidget';
-import { Container, Description, Footer, Header, Image, Row } from './styles';
+import { Container, Description, Header, Image, Row, ToggleButton } from './styles';
+import FaucetStats from '../../FaucetList/FaucetStats';
+import { FaSun, FaMoon } from 'react-icons/fa'; 
+import RecentDonations from '../../FaucetList/RecentDonations';
 
 interface Payout {
   u: number;
@@ -13,11 +15,22 @@ interface Payout {
   t: number;
 }
 
-const FaucetApp: React.FC = () => {
+interface FaucetAppProps {
+  darkMode: boolean;
+  toggleDarkMode: () => void;
+}
+
+interface Stats {
+  sent: number;
+  claims: number;
+}
+
+const FaucetApp: React.FC<FaucetAppProps> = ({ darkMode, toggleDarkMode }) => {
   const [balance, setBalance] = useState<number>(0);
   const [payout, setPayout] = useState<Payout>({ u: 0, z: 0, t: 0 });
   const [donate, setDonate] = useState<string>('');
   const [donations, setDonations] = useState<[]>([]); 
+  const [stats, setStats] = useState<Stats>({ sent: 0, claims: 0 });
 
   useEffect(() => {
     const getFaucetPayout = () => {
@@ -60,10 +73,22 @@ const FaucetApp: React.FC = () => {
         });
     };
 
+    const getFaucetStats = () => {
+      http.get('/stats')
+        .then((res) => {
+          setStats(res.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching faucet stats:', error);
+        });
+    };
+
     getFaucetPayout();
     getDonateAddress();
     getFaucetBalance();
     getLatestDonations();
+    getFaucetStats();
+
 
     const updateFaucetBalanceInterval = setInterval(getFaucetBalance, 75 * 1000);
     const updateLatestDonationsInterval = setInterval(getLatestDonations, 75 * 1000);
@@ -74,12 +99,20 @@ const FaucetApp: React.FC = () => {
     };
   }, []);
 
+  
+  
+
   return (
-    <Container>
-      <Header>Welcome to ZecFaucet.com</Header>
+    <Container >
+       <ToggleButton onClick={toggleDarkMode}>
+        {darkMode ? <FaSun /> : <FaMoon />} 
+        {darkMode ? ' Modo Claro' : ' Modo Escuro'}
+      </ToggleButton>
       <Image alt="ZecFaucet.com" src={zecFaucetImage} />
+      <Header>Welcome to ZecFaucet.com</Header>
 
       <ReceiveZec payout={payout} />
+      <FaucetStats stats={stats}  />
       <FaucetBalance balance={balance} donate={donate} />
       <RecentDonations donations={donations} />
 
@@ -88,7 +121,6 @@ const FaucetApp: React.FC = () => {
       </Row>
 
       <Description>ZecFaucet.com is not affiliated with ECC or Zcash Foundation.</Description>
-      <Footer>© 2024 ZecFaucet.com. All rights reserved.</Footer>
     </Container>
   );
 }
