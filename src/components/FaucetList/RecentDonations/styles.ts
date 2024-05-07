@@ -1,55 +1,59 @@
-import styled from "styled-components";
-
-
+import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 800px;
-  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const Title = styled.h2`
-  margin-top: 0;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 `;
 
-export const List = styled.table`
+export const List = styled.div`
+  width: 100%;
+  overflow-x: auto;
+`;
+
+export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
+  margin-top: 10px;
 `;
 
-export const Item = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
+export const Th = styled.th`
+  padding: 5px;
+  
+    align-items: center;
+    text-align: center;
+    border-bottom: 5px solid #ddd;
+`;
+
+export const Td = styled.td`
+  padding: 20px;
+  text-align: left;
+  border-bottom: 5px solid #ddd;
+`;
+
+export const Row = styled.div`
+  display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+
+  @media (max-width: 600px) {
+    font-size: 1.3em;
   }
 `;
 
-export const Label = styled.th`
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-`;
+export const Donations = styled.div`
+  font-size: 1.5em;
+  margin-bottom: 10px;
 
-export const DonationLabel = styled(Label)`
-  width: 100px;
-`;
-
-export const AmountLabel = styled(Label)`
-  width: 75px;
-  text-align: right;
-`;
-
-export const DatetimeLabel = styled(Label)`
-  text-align: right;
-  padding-right: 20px;
-`;
-
-export const Value = styled.td`
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+  @media (max-width: 600px) {
+    font-size: 1.3em;
+  }
 `;

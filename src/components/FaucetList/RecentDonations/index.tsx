@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, List, Item, DonationLabel, AmountLabel, Label, Value, Title } from './styles';
+import { Container, Donations, List, Row, Table, Td, Th } from './styles';
 interface TxDetails {
   amount: number;
   memos: string[];
@@ -17,26 +17,26 @@ interface RecentDonationsProps {
 const RecentDonations: React.FC<RecentDonationsProps> = ({ donations }) => {
   return (
     <Container>
-      <Title>Recent donations:</Title>
+      <Donations>Recent donations:</Donations>
       <List>
-        <Item>
-          <DonationLabel>Donation Amount</DonationLabel>
-          <AmountLabel>Datetime</AmountLabel>
-          <Label>Memo</Label>
-        </Item>
-        {donations.map((donation, i) => (
-          <Item key={i}>
-            <Value>{'Donation'}</Value>
-            <Value>{donation.txDetails[0].amount} ZEC</Value>
-            <Value>{new Date(donation.time * 1000).toLocaleDateString()}</Value>
-            <Value>{new Date(donation.time * 1000).toLocaleTimeString()}</Value>
-            <Value>
-              {donation.txDetails[0].memos
-                ? donation.txDetails[0].memos[0]
-                : 'No memo available'}
-            </Value>
-          </Item>
-        ))}
+        <Table>
+          <thead>
+          
+              <Th>Donation <br /> Amount</Th>
+              <Th>Datetime</Th>
+              <Th>Memo</Th>
+            
+          </thead>
+          <tbody>
+            {donations.map((donation, i) => (
+              <Row key={i}>
+                <Td>{donation.txDetails[0].amount} ZEC</Td>
+                <Td>{new Date(donation.time * 1000).toLocaleDateString()}</Td>
+                <Td>{donation.txDetails[0].memos ? donation.txDetails[0].memos[0] : 'No memo available'}</Td>
+              </Row>
+            ))}
+          </tbody>
+        </Table>
       </List>
     </Container>
   );
