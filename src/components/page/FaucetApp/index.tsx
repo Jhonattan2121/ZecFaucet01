@@ -106,7 +106,6 @@ const FaucetApp: React.FC<FaucetAppProps> = ({ darkMode, toggleDarkMode }) => {
     <Container >
        <ToggleButton onClick={toggleDarkMode}>
         {darkMode ? <FaSun /> : <FaMoon />} 
-        {darkMode ? ' Modo Claro' : ' Modo Escuro'}
       </ToggleButton>
       <Image alt="ZecFaucet.com" src={zecFaucetImage} />
       <Header>Welcome to ZecFaucet.com</Header>
