@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'; 
 import http from '../../../http-common';
 import getBrowserFingerprint from 'get-browser-fingerprint';
-import { Button, Container, FormContainer, Heading, Input, Message, Paragraph, StyledReCAPTCHA, SubHeading, SuccessMessage } from './styles';
+import { Button, Container, FormContainer, Heading, Input, Message, Paragraph, SubHeading, SuccessMessage } from './styles';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 interface Payout {
   u: number;
@@ -87,6 +88,8 @@ const ReceiveZec: React.FC<ReceiveZecProps> = ({ payout }) => {
     setVerified(false);
   };
 
+
+
   return (
     <Container>
       <Heading>Enter your Zcash address to receive up to {payout.u} ZEC:</Heading>
@@ -105,12 +108,12 @@ const ReceiveZec: React.FC<ReceiveZecProps> = ({ payout }) => {
       <SuccessMessage style={{ display: success ? 'block' : 'none' }}>Success! Your address has been added to the payout queue. In a few minutes you will receive {receive} ZEC.</SuccessMessage>
       <Message style={{ display: greedy ? 'block' : 'none' }}>Please wait {waitfor} minutes before claiming again.</Message>
       <FormContainer>
-      <StyledReCAPTCHA
-        sitekey="b72d3642-0e4a-4ed5-b859-4f6100592d26"
-        onExpired={handleCaptchaExpired}
-        onChange={(tokenStr) => handleCaptchaVerify(tokenStr)} 
-      />
-      <Button onClick={handleClaim} disabled={disableBtn}>Send</Button>
+      <HCaptcha
+          sitekey="b72d3642-0e4a-4ed5-b859-4f6100592d26"
+          onVerify={(token) => handleCaptchaVerify(token)}
+          onExpire={() => handleCaptchaExpired()}
+        />
+        <Button onClick={handleClaim} disabled={disableBtn}>Send</Button>
       </FormContainer>
     </Container>
   );

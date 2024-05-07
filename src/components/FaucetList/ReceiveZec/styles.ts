@@ -1,4 +1,3 @@
-import ReCAPTCHA from "react-google-recaptcha";
 import styled from "styled-components";
 
 
@@ -69,9 +68,6 @@ export const SuccessMessage = styled(Message)`
   color: #28a745;
 `;
 
-export const StyledReCAPTCHA = styled(ReCAPTCHA)`
-   margin: 10px auto;
-`;
 
 export const FormContainer = styled.div`
   display: flex;
