@@ -31,7 +31,7 @@ export const ToggleButton = styled.button`
 export const Header = styled.h1`
   font-size: 2em;
   margin-top: 20px;
-  color: #333;
+  
 `;
 
 export const Image = styled.img`
@@ -42,7 +42,6 @@ export const Image = styled.img`
 
 export const Description = styled.p`
   font-size: 1em;
-  color: #555;
 `;
 
 export const Row = styled.div`

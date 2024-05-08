@@ -9,19 +9,16 @@ export const Container = styled.div`
 
 export const Heading = styled.h3`
   font-size: 1.5rem;
-  color: #333;
   margin-bottom: 1rem;
 `;
 
 export const SubHeading = styled.h5`
   font-size: 1rem;
-  color: #555;
   margin-bottom: 0.5rem;
 `;
 
 export const Paragraph = styled.p`
   font-size: 0.9rem;
-  color: #666;
   margin-bottom: 1rem;
 
   a {

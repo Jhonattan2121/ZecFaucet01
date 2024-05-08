@@ -16,7 +16,6 @@ left: 1px;
 export const FaucetBalanceSpan = styled.span`
   font-size: 1.2em;
   font-weight: bold;
-  color: #333;
 `;
 
 export const DonateHeading = styled.h4`
@@ -42,5 +41,4 @@ export const DonationAddress = styled.span`
   font-size: 0.9em;
   font-family: monospace;
   word-break: break-all;
-  color: #333;
 `;

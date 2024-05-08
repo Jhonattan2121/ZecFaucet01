@@ -6,13 +6,17 @@ import zecFaucetImage from '../../../assets/zecfaucet1.png';
 import CoinTickerWidget from '../../CoinTickerWidget';
 import { Container, Description, Header, Image, Row, ToggleButton } from './styles';
 import FaucetStats from '../../FaucetList/FaucetStats';
-import { FaSun, FaMoon } from 'react-icons/fa'; 
 import RecentDonations from '../../FaucetList/RecentDonations';
+import { FaSun, FaMoon } from 'react-icons/fa'; 
 
 interface Payout {
   u: number;
   z: number;
   t: number;
+}
+interface Stats {
+  sent: number;
+  claims: number;
 }
 
 interface FaucetAppProps {
@@ -20,12 +24,8 @@ interface FaucetAppProps {
   toggleDarkMode: () => void;
 }
 
-interface Stats {
-  sent: number;
-  claims: number;
-}
 
-const FaucetApp: React.FC<FaucetAppProps> = ({ darkMode, toggleDarkMode }) => {
+const FaucetApp: React.FC<FaucetAppProps> = ({darkMode, toggleDarkMode}) => {
   const [balance, setBalance] = useState<number>(0);
   const [payout, setPayout] = useState<Payout>({ u: 0, z: 0, t: 0 });
   const [donate, setDonate] = useState<string>('');
@@ -104,7 +104,7 @@ const FaucetApp: React.FC<FaucetAppProps> = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <Container >
-       <ToggleButton onClick={toggleDarkMode}>
+      <ToggleButton onClick={toggleDarkMode}>
         {darkMode ? <FaSun /> : <FaMoon />} 
       </ToggleButton>
       <Image alt="ZecFaucet.com" src={zecFaucetImage} />

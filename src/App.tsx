@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GlobalStyle from './GlobalStyle';
+import GlobalStyle from './GlobalStyles';
 import FaucetApp from './components/page/FaucetApp';
 
 const App: React.FC = () => {
