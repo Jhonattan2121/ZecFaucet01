@@ -31,6 +31,19 @@ export const Paragraph = styled.p`
   }
 `;
 
+export const P = styled.p`
+   font-weight: bold;
+
+   a {
+    color: #007bff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
 export const Input = styled.input`
   width: 100%;
   padding: 0.5rem;
@@ -43,11 +56,20 @@ export const Input = styled.input`
 export const Button = styled.button`
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  background-color: #007bff;
+  background-color: #007bff; 
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s; 
+
+  &:hover {
+    background-color: #0056b3; 
+  }
+
+  &:active {
+    transform: translateY(1px); 
+  }
 
   &:disabled {
     opacity: 0.7;
