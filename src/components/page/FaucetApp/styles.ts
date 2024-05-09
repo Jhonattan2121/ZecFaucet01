@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   max-width: 800px; 
@@ -41,10 +41,20 @@ export const Header = styled.h1`
   
 `;
 
+const rotate = keyframes`
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+`;
+
 export const Image = styled.img`
-  max-width: 100%;
+ max-width: 100%;
   height: auto;
   border-radius: 50%;
+  animation: ${rotate} 10s linear infinite;
 `;
 
 export const Description = styled.p`
