@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
-  max-width: 800px;
+  max-width: 800px; 
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 export const ToggleButton = styled.button`
-  display: flex;
+ display: flex;
   align-items: center;
   background-color: transparent;
   border: none;
@@ -31,6 +34,10 @@ export const ToggleButton = styled.button`
 export const Header = styled.h1`
   font-size: 2em;
   margin-top: 20px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5em;
+  }
   
 `;
 
@@ -42,6 +49,10 @@ export const Image = styled.img`
 
 export const Description = styled.p`
   font-size: 1em;
+
+@media screen and (max-width: 768px) {
+  font-size: 0.8em;
+}
 `;
 
 export const Row = styled.div`
@@ -49,8 +60,20 @@ export const Row = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  
 `;
 
- 
+export const Column = styled.div`
+  flex: 1;
+  margin: 10px;
+`;
 
+export const WidgetContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
