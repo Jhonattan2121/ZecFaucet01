@@ -26,9 +26,9 @@ export const Table = styled.table`
 
 export const Th = styled.th`
   padding: 5px;
-  
+  text-align: left;
     align-items: center;
-    text-align: center;
+   
     border-bottom: 5px solid #ddd;
 `;
 
