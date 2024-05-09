@@ -35,9 +35,13 @@ const FaucetApp: React.FC<FaucetAppProps> = ({darkMode, toggleDarkMode}) => {
   useEffect(() => {
     const getFaucetPayout = () => {
       http.get('/payout')
-        .then((res) => {
-          setPayout(res.data);
-        })
+      .then((res) => {
+        setPayout({
+          u: res.data.u_pay,
+          z: res.data.z_pay,
+          t: res.data.t_pay
+        });
+      })
         .catch((error) => {
           console.error('Error fetching faucet payout:', error);
         });
