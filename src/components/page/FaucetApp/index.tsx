@@ -111,8 +111,8 @@ const FaucetApp: React.FC<FaucetAppProps> = ({darkMode, toggleDarkMode}) => {
       <Header>Welcome to ZecFaucet.com</Header>
 
       <ReceiveZec payout={payout} />
-      <FaucetStats stats={stats}  />
       <FaucetBalance balance={balance} donate={donate} />
+      <FaucetStats stats={stats}  />
       <RecentDonations donations={donations} />
 
       <Row>
