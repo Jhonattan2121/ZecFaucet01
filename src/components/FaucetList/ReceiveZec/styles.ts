@@ -55,20 +55,20 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #007bff; 
+  font-size: 1.5rem;
+  background-color: #ffd700; 
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.1s; 
+  transition: background-color 0.3s, transform 0.1s;
 
   &:hover {
-    background-color: #0056b3; 
+    background-color: #ffcc00; 
   }
 
   &:active {
-    transform: translateY(1px); 
+    transform: translateY(1px);
   }
 
   &:disabled {
@@ -76,6 +76,7 @@ export const Button = styled.button`
     cursor: not-allowed;
   }
 `;
+
 
 export const Message = styled.div`
   font-size: 0.9rem;

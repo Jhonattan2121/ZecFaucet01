@@ -3,7 +3,6 @@ import http from '../../../http-common';
 import getBrowserFingerprint from 'get-browser-fingerprint';
 import { Button, Container, FormContainer, Heading, Input, Message, P, Paragraph, SubHeading, SuccessMessage } from './styles';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { BsArrowBarDown } from "react-icons/bs";
 
 interface Payout {
   u: number;
@@ -99,7 +98,7 @@ const ReceiveZec: React.FC<ReceiveZecProps> = ({ payout }) => {
       <SubHeading>* ZecFaucet does not send to transparent addresses.</SubHeading>
       <Paragraph>Don't have a Zcash wallet? Find the best wallet <a href="https://z.cash/wallets">here</a>.</Paragraph>
       <P>ZecFaucet recommended wallet: <a href="https://electriccoin.co/zashi/">Zashi.</a></P>
-      <Input type="text" value={address} onChange={(e) => setAddress(e.target.value)}  placeholder='Insira sua carteira aqui !'/>
+      <Input type="text" value={address} onChange={(e) => setAddress(e.target.value)}  placeholder='Insert your wallet here!'/>
       <Message style={{ display: solveCaptcha ? 'block' : 'none' }}>Please solve the captcha before claiming.</Message>
       <Message style={{ display: invalidCaptcha ? 'block' : 'none' }}>Sorry, we couldn't verify you're not a robot.</Message>
       <Message style={{ display: syncing ? 'block' : 'none' }}>It looks like the backend wallet is not synchronized! Please wait a few minutes and try again.</Message>
@@ -114,7 +113,7 @@ const ReceiveZec: React.FC<ReceiveZecProps> = ({ payout }) => {
           onVerify={(token) => handleCaptchaVerify(token)}
           onExpire={() => handleCaptchaExpired()}
         />
-        <Button onClick={handleClaim} disabled={disableBtn}><BsArrowBarDown /></Button>
+        <Button onClick={handleClaim} disabled={disableBtn}>Send Now</Button>
       </FormContainer>
     </Container>
   );
