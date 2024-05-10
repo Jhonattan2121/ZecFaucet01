@@ -104,8 +104,6 @@ const FaucetApp: React.FC<FaucetAppProps> = ({darkMode, toggleDarkMode}) => {
   }, []);
 
   
-  
-
   return (
     <Container >
       <ToggleButton onClick={toggleDarkMode}>
