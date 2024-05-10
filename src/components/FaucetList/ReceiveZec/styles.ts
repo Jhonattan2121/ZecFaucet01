@@ -51,6 +51,10 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 1rem;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const Button = styled.button`
